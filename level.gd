@@ -7,3 +7,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_maze_body_exited(body):
+	get_tree().reload_current_scene()
+
+
