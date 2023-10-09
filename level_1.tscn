@@ -17,26 +17,22 @@ font_size = 18
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_xrewa")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Graphics" type="Node" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Graphics"]
 layer = -10
 
-[node name="Background" type="TextureRect" parent="CanvasLayer"]
+[node name="Background" type="TextureRect" parent="Graphics/CanvasLayer"]
 z_index = -100
-offset_left = -77.0
-offset_top = -153.0
-offset_right = 1378.0
-offset_bottom = 864.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_7uiy4")
 stretch_mode = 1
 
-[node name="player" parent="." instance=ExtResource("2_8ekjd")]
-position = Vector2(575, 307)
-
-[node name="maze" parent="." instance=ExtResource("4_0b8jt")]
-z_index = -50
-position = Vector2(575, 351)
-
-[node name="Start Label" type="Label" parent="."]
+[node name="Start Label" type="Label" parent="Graphics"]
 z_index = -25
 offset_left = 419.0
 offset_top = 283.0
@@ -45,7 +41,7 @@ offset_bottom = 349.0
 text = "Start"
 label_settings = SubResource("LabelSettings_t7scj")
 
-[node name="End Label" type="Label" parent="."]
+[node name="End Label" type="Label" parent="Graphics"]
 z_index = -25
 offset_left = 1854.0
 offset_top = 379.0
@@ -54,7 +50,7 @@ offset_bottom = 446.0
 text = "End"
 label_settings = SubResource("LabelSettings_glf11")
 
-[node name="Rules Label" type="Label" parent="."]
+[node name="Rules Label" type="Label" parent="Graphics"]
 z_index = -25
 offset_left = 11.0
 offset_top = 291.0
@@ -65,5 +61,12 @@ text = "Rules:
 - Go from the start to end
 - Don't exit the maze"
 label_settings = SubResource("LabelSettings_bx0y2")
+
+[node name="player" parent="." instance=ExtResource("2_8ekjd")]
+position = Vector2(575, 307)
+
+[node name="maze" parent="." instance=ExtResource("4_0b8jt")]
+z_index = -50
+position = Vector2(575, 351)
 
 [connection signal="body_exited" from="maze" to="." method="_on_maze_body_exited"]
